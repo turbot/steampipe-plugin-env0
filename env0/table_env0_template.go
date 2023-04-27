@@ -169,6 +169,13 @@ func tableenv0Template(_ context.Context) *plugin.Table {
 				Description: "File name associated with template.",
 				Type:        proto.ColumnType_STRING,
 			},
+			// Steampipe standard columns
+			{
+				Name:        "title",
+				Description: "Title of the resource.",
+				Type:        proto.ColumnType_STRING,
+				Transform:   transform.FromField("Name"),
+			},
 		},
 	}
 }
