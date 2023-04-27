@@ -24,6 +24,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			"env0_organization": tableEnv0Organization(ctx),
 			"env0_project":      tableenv0Project(ctx),
 			"env0_team":         tableEnv0Team(ctx),
+			"env0_user":         tableEnv0User(ctx),
 		},
 	}
 	return p
