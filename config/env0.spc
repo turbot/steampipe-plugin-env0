@@ -8,4 +8,7 @@ connection "env0" {
   # The secret key for the env0 account.
   # secret_key = "DjfrsqEBA4vVjhdsieDShdjs"
 
+  # Organization ID
+  # organization_id = "1234567"
+
 }
