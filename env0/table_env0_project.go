@@ -19,7 +19,7 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 		},
 		Get: &plugin.GetConfig{
 			KeyColumns: plugin.SingleColumn("id"),
-			Hydrate: getProject,
+			Hydrate:    getProject,
 		},
 		Columns: []*plugin.Column{
 			{
@@ -131,13 +131,13 @@ func getProject(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData)
 	// Create client
 	client, err := connect(ctx, d)
 	if err != nil {
-		logger.Error("env0_project.listProjects", "connection_error", err)
+		logger.Error("env0_project.getProject", "connection_error", err)
 		return nil, err
 	}
 
 	result, err := client.Project(projectId)
 	if err != nil {
-		plugin.Logger(ctx).Error("godaddy_domain.getDomain", "api_error", err)
+		plugin.Logger(ctx).Error("env0_project.getProject", "api_error", err)
 		return nil, err
 	}
 
