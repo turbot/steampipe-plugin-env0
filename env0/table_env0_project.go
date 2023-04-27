@@ -13,15 +13,20 @@ import (
 func tableenv0Project(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_project",
-		Description: "TODO.",
+		Description: "Returns information about the Env0 project.",
 		List: &plugin.ListConfig{
 			Hydrate: listProjects,
 		},
-		// Get: &plugin.GetConfig{
-		// 	KeyColumns: plugin.SingleColumn("id"),
-		// 	Hydrate: getAccessToken,
-		// },
+		Get: &plugin.GetConfig{
+			KeyColumns: plugin.SingleColumn("id"),
+			Hydrate: getProject,
+		},
 		Columns: []*plugin.Column{
+			{
+				Name:        "name",
+				Description: "Name of the project.",
+				Type:        proto.ColumnType_STRING,
+			},
 			{
 				Name:        "id",
 				Description: "Unique identifier of the project.",
@@ -35,11 +40,6 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 			{
 				Name:        "parent_project_id",
 				Description: "Parent project id of the project.",
-				Type:        proto.ColumnType_STRING,
-			},
-			{
-				Name:        "name",
-				Description: "Name of the project.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -116,4 +116,30 @@ func listProjects(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateDat
 	}
 
 	return nil, nil
+}
+
+//// HYDRATED FUNCTION
+
+func getProject(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+	logger := plugin.Logger(ctx)
+	projectId := d.EqualsQualString("id")
+
+	if projectId == "" {
+		return nil, nil
+	}
+
+	// Create client
+	client, err := connect(ctx, d)
+	if err != nil {
+		logger.Error("env0_project.listProjects", "connection_error", err)
+		return nil, err
+	}
+
+	result, err := client.Project(projectId)
+	if err != nil {
+		plugin.Logger(ctx).Error("godaddy_domain.getDomain", "api_error", err)
+		return nil, err
+	}
+
+	return result, nil
 }
