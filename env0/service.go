@@ -62,7 +62,7 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 	if err != nil {
 		plugin.Logger(ctx).Error("Error in creating the client", err)
 	}
-	client := env0CLient.NewApiClient(httpClient, organization_id)
+	client := env0CLient.NewApiClient(httpClient, "")
 
 	d.ConnectionManager.Cache.Set(cacheKey, client)
 	return client, nil

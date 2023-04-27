@@ -5,12 +5,11 @@ import (
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 //// TABLE DEFINITION
 
-func tablelaunchdarklyAccessToken(_ context.Context) *plugin.Table {
+func tableEnv0Organization(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_organization",
 		Description: "TODO.",
@@ -28,89 +27,55 @@ func tablelaunchdarklyAccessToken(_ context.Context) *plugin.Table {
 				Type:        proto.ColumnType_STRING,
 			},
 			{
-				Name:        "raw",
-				Description: "Raw output.",
-				Type:        proto.ColumnType_JSON,
-				Transform:   transform.FromValue(),
+				Name:        "id",
+				Description: "Organization ID.",
+				Type:        proto.ColumnType_STRING,
 			},
-			// {
-			// 	Name:        "id",
-			// 	Description: "A unique identifier of the access token.",
-			// 	Type:        proto.ColumnType_STRING,
-			// },
-			// {
-			// 	Name:        "owner_id",
-			// 	Description: "A unique identifier of the owner of the organization.",
-			// 	Type:        proto.ColumnType_STRING,
-			// },
-			// {
-			// 	Name:        "member_id",
-			// 	Description: "A unique identifier of the member of the organization.",
-			// 	Type:        proto.ColumnType_STRING,
-			// },
-			// {
-			// 	Name:        "description",
-			// 	Description: "A description for the access token.",
-			// 	Type:        proto.ColumnType_STRING,
-			// },
-			// {
-			// 	Name:        "member",
-			// 	Description: "Summary of the member like email, first name, last name etc.",
-			// 	Type:        proto.ColumnType_JSON,
-			// },
-			// {
-			// 	Name:        "creation_date",
-			// 	Description: "Creation date of the access token.",
-			// 	Type:        proto.ColumnType_TIMESTAMP,
-			// 	Transform:   transform.FromField("CreationDate").Transform(transform.UnixMsToTimestamp),
-			// },
-			// {
-			// 	Name:        "last_modified",
-			// 	Description: "Last modified date of the access token.",
-			// 	Type:        proto.ColumnType_TIMESTAMP,
-			// 	Transform:   transform.FromField("LastModified").Transform(transform.UnixMsToTimestamp),
-			// },
-			// {
-			// 	Name:        "custom_role_ids",
-			// 	Description: "A list of custom role IDs to use as access limits for the access token.",
-			// 	Type:        proto.ColumnType_JSON,
-			// },
-			// {
-			// 	Name:        "inline_role",
-			// 	Description: "An array of policy statements, with three attributes: effect, resources, actions. May be used in place of a built-in or custom role.",
-			// 	Type:        proto.ColumnType_JSON,
-			// },
-			// {
-			// 	Name:        "role",
-			// 	Description: "Built-in role for the token.",
-			// 	Type:        proto.ColumnType_STRING,
-			// },
-			// {
-			// 	Name:        "token",
-			// 	Description: "The token value. When creating or resetting, contains the entire token value. Otherwise, contains the last four characters.",
-			// 	Type:        proto.ColumnType_STRING,
-			// },
-			// {
-			// 	Name:        "service_token",
-			// 	Description: "Whether this is a service token or a personal token.",
-			// 	Type:        proto.ColumnType_BOOL,
-			// },
-			// {
-			// 	Name:        "links",
-			// 	Description: "The location and content type of related resources.",
-			// 	Type:        proto.ColumnType_JSON,
-			// },
-			// {
-			// 	Name:        "default_api_version",
-			// 	Description: "The default API version for this token.",
-			// 	Type:        proto.ColumnType_INT,
-			// },
-			// {
-			// 	Name:        "last_used",
-			// 	Description: "Date and time when the access token was last used.",
-			// 	Type:        proto.ColumnType_TIMESTAMP,
-			// 	Transform:   transform.FromField("LastUsed").Transform(transform.UnixMsToTimestamp),
-			// },
+			{
+				Name:        "max_ttl",
+				Description: "Max TTL of the organization.",
+				Type:        proto.ColumnType_STRING,
+			},
+			{
+				Name:        "default_ttl",
+				Description: "Default TTL of the organization.",
+				Type:        proto.ColumnType_STRING,
+			},
+			{
+				Name:        "do_not_report_skipped_status_checks",
+				Description: "Check if the organization does not report skipped status checks.",
+				Type:        proto.ColumnType_BOOL,
+			},
+			{
+				Name:        "do_not_consider_merge_commits_for_pr_plans",
+				Description: "Check if the organization does not consider merge commits for PR plans.",
+				Type:        proto.ColumnType_BOOL,
+			},
+			{
+				Name:        "enable_oidc",
+				Description: "Check whether OIDC is enabled for the organziation.",
+				Type:        proto.ColumnType_BOOL,
+			},
+			{
+				Name:        "enforce_pr_commenter_permissions",
+				Description: "Check whether the organization has enforced PR commenter permissions.",
+				Type:        proto.ColumnType_BOOL,
+			},
+			{
+				Name:        "description",
+				Description: "Organization description.",
+				Type:        proto.ColumnType_STRING,
+			},
+			{
+				Name:        "photo_url",
+				Description: "The URL of the organization's display photo.",
+				Type:        proto.ColumnType_STRING,
+			},
+			{
+				Name:        "created_by",
+				Description: "The name.",
+				Type:        proto.ColumnType_STRING,
+			},
 			// // Steampipe standard columns
 			// {
 			// 	Name:        "title",
@@ -121,7 +86,6 @@ func tablelaunchdarklyAccessToken(_ context.Context) *plugin.Table {
 		},
 	}
 }
-
 
 //// LIST FUNCTION
 
@@ -141,6 +105,9 @@ func listOrganizations(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 		return nil, err
 	}
 	d.StreamListItem(ctx, organization)
+	if d.RowsRemaining(ctx) == 0 {
+		return nil, nil
+	}
 
 	return nil, nil
 }
