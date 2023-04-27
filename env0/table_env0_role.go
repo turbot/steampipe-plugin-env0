@@ -10,26 +10,26 @@ import (
 
 //// TABLE DEFINITION
 
-func tableEnv0Team(_ context.Context) *plugin.Table {
+func tableEnv0Role(_ context.Context) *plugin.Table {
 	return &plugin.Table{
-		Name:        "env0_team",
-		Description: "Returns information about the Env0 teams.",
+		Name:        "env0_role",
+		Description: "Returns information about the Env0 roles.",
 		List: &plugin.ListConfig{
-			Hydrate: listTeams,
+			Hydrate: listRoles,
 		},
 		Get: &plugin.GetConfig{
 			KeyColumns: plugin.SingleColumn("id"),
-			Hydrate:    getTeam,
+			Hydrate:    getRole,
 		},
 		Columns: []*plugin.Column{
 			{
 				Name:        "name",
-				Description: "The name of the team.",
+				Description: "The name of the role.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "id",
-				Description: "Team ID.",
+				Description: "A unique identifier of the role.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -38,14 +38,14 @@ func tableEnv0Team(_ context.Context) *plugin.Table {
 				Type:        proto.ColumnType_STRING,
 			},
 			{
-				Name:        "description",
-				Description: "A brief description of the team.",
-				Type:        proto.ColumnType_STRING,
+				Name:        "permissions",
+				Description: "Permissions associated with the role.",
+				Type:        proto.ColumnType_JSON,
 			},
 			{
-				Name:        "users",
-				Description: "List the users in a team.",
-				Type:        proto.ColumnType_JSON,
+				Name:        "is_default_role",
+				Description: "Returns tru if the role is default.",
+				Type:        proto.ColumnType_BOOL,
 			},
 			// Steampipe standard columns
 			{
@@ -60,24 +60,24 @@ func tableEnv0Team(_ context.Context) *plugin.Table {
 
 //// LIST FUNCTION
 
-func listTeams(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+func listRoles(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 	logger := plugin.Logger(ctx)
 
 	// Create client
 	client, err := connect(ctx, d)
 	if err != nil {
-		logger.Error("env0_team.listTeams", "connection_error", err)
+		logger.Error("env0_role.listRoles", "connection_error", err)
 		return nil, err
 	}
 
-	teams, err := client.Teams()
+	roles, err := client.Roles()
 	if err != nil {
-		logger.Error("env0_team.listTeams", "api_error", err)
+		logger.Error("env0_role.listRoles", "api_error", err)
 		return nil, err
 	}
 
-	for _, team := range teams {
-		d.StreamListItem(ctx, team)
+	for _, role := range roles {
+		d.StreamListItem(ctx, role)
 
 		// Context may get cancelled due to manual cancellation or if the limit has been reached
 		if d.RowsRemaining(ctx) == 0 {
@@ -88,22 +88,22 @@ func listTeams(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) 
 	return nil, nil
 }
 
-func getTeam(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+func getRole(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 	logger := plugin.Logger(ctx)
 	id := d.EqualsQualString("id")
 
 	// Create client
 	client, err := connect(ctx, d)
 	if err != nil {
-		logger.Error("env0_team.getTeam", "connection_error", err)
+		logger.Error("env0_role.getRole", "connection_error", err)
 		return nil, err
 	}
 
-	team, err := client.Team(id)
+	role, err := client.Role(id)
 	if err != nil {
-		logger.Error("env0_team.getTeam", "api_error", err)
+		logger.Error("env0_role.getRole", "api_error", err)
 		return nil, err
 	}
 
-	return team, nil
+	return role, nil
 }
