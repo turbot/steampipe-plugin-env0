@@ -21,8 +21,9 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			Schema:      ConfigSchema,
 		},
 		TableMap: map[string]*plugin.Table{
-			"env0_project":      tableenv0Project(ctx),
 			"env0_organization": tableEnv0Organization(ctx),
+			"env0_project":      tableenv0Project(ctx),
+			"env0_team":         tableEnv0Team(ctx),
 		},
 	}
 	return p
