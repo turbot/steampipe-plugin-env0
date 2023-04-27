@@ -19,7 +19,6 @@ from
   env0_organization;
 ```
 
-
 ### List Organizations created in the last 30 days
 
 ```sql
