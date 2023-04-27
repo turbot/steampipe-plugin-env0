@@ -21,13 +21,8 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			Schema:      ConfigSchema,
 		},
 		TableMap: map[string]*plugin.Table{
-			"env0_organization": tablelaunchdarklyAccessToken(ctx),
-			// "env0_account_member": tableenv0AccountMember(ctx),
-			// "env0_audit_log":      tableenv0AuditLog(ctx),
-			// "env0_environment":    tableenv0Environment(ctx),
-			// "env0_feature_flag":   tableenv0FeatureFlag(ctx),
-			"env0_project": tableenv0Project(ctx),
-			// "env0_team":           tableenv0Team(ctx),
+			"env0_project":      tableenv0Project(ctx),
+			"env0_organization": tableEnv0Organization(ctx),
 		},
 	}
 	return p
