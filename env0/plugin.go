@@ -21,10 +21,12 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			Schema:      ConfigSchema,
 		},
 		TableMap: map[string]*plugin.Table{
+			"env0_api_key":      tableEnv0APIKey(ctx),
 			"env0_organization": tableEnv0Organization(ctx),
 			"env0_project":      tableenv0Project(ctx),
 			"env0_team":         tableEnv0Team(ctx),
 			"env0_template":     tableenv0Template(ctx),
+			"env0_user":         tableEnv0User(ctx),
 		},
 	}
 	return p
