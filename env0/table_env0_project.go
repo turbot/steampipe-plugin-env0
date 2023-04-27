@@ -5,7 +5,6 @@ import (
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 //// TABLE DEFINITION
@@ -51,7 +50,6 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 				Name:        "created_by_user",
 				Description: "The role of the person created the project.",
 				Type:        proto.ColumnType_STRING,
-				Transform:   transform.FromField("CreatedByUser"),
 			},
 			{
 				Name:        "description",
@@ -77,12 +75,6 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 				Name:        "created_at",
 				Description: "The date and time when project was created",
 				Type:        proto.ColumnType_TIMESTAMP,
-			},
-			{
-				Name:        "raw",
-				Description: "Raw output.",
-				Type:        proto.ColumnType_JSON,
-				Transform:   transform.FromValue(),
 			},
 		},
 	}
