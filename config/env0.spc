@@ -1,14 +1,10 @@
 connection "env0" {
   plugin = "env0"
 
-  # For setting API keys see instructions at https://developer.env0.com/keys
-  # The API key for the env0 account.
-  # api_key = "hkw647irnrhttXW_TmcsFgxJQBvLjE5Lda8402"
+  # For setting API key and secret see instructions at https://developer.env0.com/keys
+  # `api_secret`: The API key for the env0 account. (Required)
+  # api_key = "asdpoblfth8acbd"
 
-  # The secret key for the env0 account.
-  # secret_key = "DjfrsqEBA4vVjhdsieDShdjs"
-
-  # Organization ID
-  # organization_id = "1234567"
-
+  # `api_secret`: The API secret of the env0 account. (Required)
+  # api_secret = "LjatOxDqNN9iKH1sLn14TojGkuH3GQAx"
 }

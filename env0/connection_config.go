@@ -8,7 +8,6 @@ import (
 type env0Config struct {
 	APIKey    *string `cty:"api_key"`
 	APISecret *string `cty:"api_secret"`
-	OrganizationId *string `cty:"organization_id"`
 }
 
 var ConfigSchema = map[string]*schema.Attribute{
@@ -16,9 +15,6 @@ var ConfigSchema = map[string]*schema.Attribute{
 		Type: schema.TypeString,
 	},
 	"api_secret": {
-		Type: schema.TypeString,
-	},
-	"organization_id": {
 		Type: schema.TypeString,
 	},
 }

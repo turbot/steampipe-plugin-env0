@@ -24,7 +24,6 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 	// Default to using env vars (#2)
 	api_key := os.Getenv("ENV0_API_KEY")
 	api_secret := os.Getenv("ENV0_API_SECRET")
-	organization_id := os.Getenv("ENV0_ORGANIZATION_ID")
 
 	// But prefer the config (#1)
 	env0Config := GetConfig(d.Connection)
@@ -35,21 +34,14 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 	if env0Config.APISecret != nil {
 		api_secret = *env0Config.APISecret
 	}
-	if env0Config.OrganizationId != nil {
-		organization_id = *env0Config.OrganizationId
-	}
 
 	if api_key == "" {
-		// Credentials not set
+		// api_key not set
 		return nil, errors.New("api_key must be configured")
 	}
 	if api_secret == "" {
-		// Credentials not set
+		// api_secret not set
 		return nil, errors.New("api_secret must be configured")
-	}
-	if organization_id == "" {
-		// Credentials not set
-		return nil, errors.New("organization_id must be configured")
 	}
 
 	httpClient, err := http.NewHttpClient(http.HttpClientConfig{
