@@ -22,6 +22,7 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 		},
 		TableMap: map[string]*plugin.Table{
 			"env0_api_key":      tableEnv0APIKey(ctx),
+			"env0_environment":  tableenv0Environment(ctx),
 			"env0_organization": tableEnv0Organization(ctx),
 			"env0_project":      tableenv0Project(ctx),
 			"env0_team":         tableEnv0Team(ctx),

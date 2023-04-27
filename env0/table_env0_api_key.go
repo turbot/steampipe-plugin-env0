@@ -17,10 +17,7 @@ func tableEnv0APIKey(_ context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listAPIKeys,
 		},
-		// Get: &plugin.GetConfig{
-		// 	KeyColumns: plugin.SingleColumn("id"),
-		// 	Hydrate:    getTeam,
-		// },
+
 		Columns: []*plugin.Column{
 			{
 				Name:        "name",
@@ -38,11 +35,6 @@ func tableEnv0APIKey(_ context.Context) *plugin.Table {
 				Type:        proto.ColumnType_STRING,
 			},
 			{
-				Name:        "api_key_secret",
-				Description: "API Key secret value.",
-				Type:        proto.ColumnType_STRING,
-			},
-			{
 				Name:        "organization_id",
 				Description: "Organization ID.",
 				Type:        proto.ColumnType_STRING,
@@ -56,6 +48,7 @@ func tableEnv0APIKey(_ context.Context) *plugin.Table {
 				Name:        "last_used_at",
 				Description: "Returns the time and date when the API key was last used.",
 				Type:        proto.ColumnType_TIMESTAMP,
+				Transform:   transform.FromField("LastUsedAt").NullIfZero(),
 			},
 			{
 				Name:        "created_at",
@@ -71,12 +64,6 @@ func tableEnv0APIKey(_ context.Context) *plugin.Table {
 				Name:        "created_by_user",
 				Description: "Details of the user who created the API key.",
 				Type:        proto.ColumnType_JSON,
-			},
-			{
-				Name:        "raw",
-				Description: "Raw output.",
-				Type:        proto.ColumnType_JSON,
-				Transform:   transform.FromValue(),
 			},
 			// Steampipe standard columns
 			{
