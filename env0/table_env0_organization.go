@@ -122,6 +122,7 @@ func tablelaunchdarklyAccessToken(_ context.Context) *plugin.Table {
 	}
 }
 
+
 //// LIST FUNCTION
 
 func listOrganizations(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
@@ -139,8 +140,9 @@ func listOrganizations(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 		logger.Error("env0_organization.listOrganizations", "api_error", err)
 		return nil, err
 	}
+	d.StreamListItem(ctx, organization)
 
-	return organization.Name, nil
+	return nil, nil
 }
 
 // func getAccessToken(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
