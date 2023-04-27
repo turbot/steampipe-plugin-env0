@@ -5,6 +5,7 @@ import (
 
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 //// TABLE DEFINITION
@@ -12,14 +13,10 @@ import (
 func tableEnv0Organization(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_organization",
-		Description: "TODO.",
+		Description: "Returns information about the Env0 organization.",
 		List: &plugin.ListConfig{
 			Hydrate: listOrganizations,
 		},
-		// Get: &plugin.GetConfig{
-		// 	KeyColumns: plugin.SingleColumn("id"),
-		// 	Hydrate: getAccessToken,
-		// },
 		Columns: []*plugin.Column{
 			{
 				Name:        "name",
@@ -73,16 +70,36 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by",
-				Description: "The name.",
+				Description: "The creator of the organization.",
 				Type:        proto.ColumnType_STRING,
 			},
-			// // Steampipe standard columns
-			// {
-			// 	Name:        "title",
-			// 	Description: "Title of the resource.",
-			// 	Type:        proto.ColumnType_STRING,
-			// 	Transform:   transform.FromField("Name"),
-			// },
+			{
+				Name:        "created_at",
+				Description: "Date and time when the organziation was created.",
+				Type:        proto.ColumnType_TIMESTAMP,
+			},
+			{
+				Name:        "updated_at",
+				Description: "Date and time when the organziation last updated.",
+				Type:        proto.ColumnType_TIMESTAMP,
+			},
+			{
+				Name:        "role",
+				Description: "Organization role.",
+				Type:        proto.ColumnType_STRING,
+			},
+			{
+				Name:        "is_self_hosted_k8s",
+				Description: "Returns true if the orgization is a self hosted k8.",
+				Type:        proto.ColumnType_BOOL,
+			},
+			// Steampipe standard columns
+			{
+				Name:        "title",
+				Description: "Title of the resource.",
+				Type:        proto.ColumnType_STRING,
+				Transform:   transform.FromField("Name"),
+			},
 		},
 	}
 }
@@ -99,6 +116,10 @@ func listOrganizations(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 		return nil, err
 	}
 
+	projects, err := client.Projects()
+	
+	
+
 	organization, err := client.Organization()
 	if err != nil {
 		logger.Error("env0_organization.listOrganizations", "api_error", err)
@@ -111,22 +132,3 @@ func listOrganizations(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 
 	return nil, nil
 }
-
-// func getAccessToken(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
-// 	logger := plugin.Logger(ctx)
-// 	id := d.EqualsQualString("id")
-// 	// Create client
-// 	client, err := connect(ctx, d)
-// 	if err != nil {
-// 		logger.Error("launchdarkly_access_token.getAccessToken", "connection_error", err)
-// 		return nil, err
-// 	}
-
-// 	token, _, err := client.AccessTokensApi.GetToken(ctx, id).Execute()
-// 	if err != nil {
-// 		logger.Error("launchdarkly_access_token.listAccessTokens", "api_error", err)
-// 		return nil, err
-// 	}
-
-// 	return token, nil
-// }
