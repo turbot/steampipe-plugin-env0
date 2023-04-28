@@ -13,7 +13,7 @@ import (
 func tableenv0Template(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_template",
-		Description: "Returns information about the Env0 template.",
+		Description: "Returns information about the env0 template.",
 		List: &plugin.ListConfig{
 			Hydrate: listTemplates,
 		},

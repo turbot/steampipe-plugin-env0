@@ -1,6 +1,6 @@
 # Table: env0_role
 
-This table returns information about the roles in an Env0 Organization. This includes both the default and the custom roles.
+This table returns information about the roles in an env0 Organization. This includes both the default and the custom roles.
 
 ## Examples
 
@@ -53,12 +53,12 @@ select
   id,
   organization_id,
   is_default_role,
-  jsonb_pretty(permissions) 
+  jsonb_pretty(permissions)
 from
-  env0_role 
+  env0_role
 where
-  not is_default_role 
-  and 
+  not is_default_role
+  and
   (
     permissions
   )

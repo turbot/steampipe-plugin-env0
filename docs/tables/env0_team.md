@@ -1,6 +1,6 @@
 # Table: env0_team
 
-This table returns information about the teams in an Env0 Organization.
+This table returns information about the teams in an env0 Organization.
 
 ## Examples
 

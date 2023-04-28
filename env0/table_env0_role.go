@@ -13,7 +13,7 @@ import (
 func tableEnv0Role(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_role",
-		Description: "Returns information about the Env0 roles.",
+		Description: "Returns information about the env0 roles.",
 		List: &plugin.ListConfig{
 			Hydrate: listRoles,
 		},

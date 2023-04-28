@@ -14,7 +14,7 @@ import (
 func tableenv0Project(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_project",
-		Description: "Returns information about the Env0 project.",
+		Description: "Returns information about the env0 project.",
 		List: &plugin.ListConfig{
 			Hydrate: listProjects,
 		},

@@ -13,7 +13,7 @@ import (
 func tableenv0Environment(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_environment",
-		Description: "Returns information about the Env0 environment.",
+		Description: "Returns information about the env0 environment.",
 		List: &plugin.ListConfig{
 			Hydrate: listEnvironments,
 		},

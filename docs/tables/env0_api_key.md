@@ -1,6 +1,6 @@
 # Table: env0_api_key
 
-This table returns information about the API keys in your Env0 Organization.
+This table returns information about the API keys in your env0 Organization.
 
 ## Examples
 

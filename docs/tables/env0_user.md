@@ -1,6 +1,6 @@
 # Table: env0_user
 
-This table returns information about the users in an Env0 Organization.
+This table returns information about the users in an env0 Organization.
 
 ## Examples
 
@@ -38,7 +38,7 @@ where
   created_at >= now() - interval '30' day;
 ```
 
-### List users who haven't logged in to Env0 platform in the last 30 days
+### List users who haven't logged in to env0 platform in the last 30 days
 
 ```sql
 select

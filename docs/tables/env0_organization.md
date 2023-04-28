@@ -1,6 +1,6 @@
 # Table: env0_organization
 
-This table returns information about the Env0 Organization.
+This table returns information about the env0 Organization.
 
 ## Examples
 

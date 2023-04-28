@@ -1,6 +1,6 @@
 # Table: env0_environment
 
-This table returns information about the Env0 Environment.
+This table returns information about the env0 Environment.
 
 ## Examples
 

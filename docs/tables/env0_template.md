@@ -1,6 +1,6 @@
 # Table: env0_template
 
-This table returns information about the Env0 Template.
+This table returns information about the env0 Template.
 
 ## Examples
 

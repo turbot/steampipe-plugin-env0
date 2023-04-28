@@ -13,7 +13,7 @@ import (
 func tableEnv0Notification(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_notification",
-		Description: "Returns information about the Env0 notifications.",
+		Description: "Returns information about the env0 notifications.",
 		List: &plugin.ListConfig{
 			Hydrate: listNotification,
 		},

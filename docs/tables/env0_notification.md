@@ -1,6 +1,6 @@
 # Table: env0_notification
 
-This table returns information about the Env0 Notification.
+This table returns information about the env0 Notification.
 
 ## Examples
 

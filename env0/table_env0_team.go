@@ -13,7 +13,7 @@ import (
 func tableEnv0Team(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_team",
-		Description: "Returns information about the Env0 teams.",
+		Description: "Returns information about the env0 teams.",
 		List: &plugin.ListConfig{
 			Hydrate: listTeams,
 		},

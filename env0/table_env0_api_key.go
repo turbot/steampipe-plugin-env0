@@ -13,7 +13,7 @@ import (
 func tableEnv0APIKey(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "env0_api_key",
-		Description: "Returns information about the Env0 API keys.",
+		Description: "Returns information about the env0 API keys.",
 		List: &plugin.ListConfig{
 			Hydrate: listAPIKeys,
 		},

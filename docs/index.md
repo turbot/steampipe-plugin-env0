@@ -5,7 +5,7 @@ icon_url: "/images/plugins/turbot/env0.svg"
 brand_color: "#00EDB9"
 display_name: "env0"
 short_name: "env0"
-description: "Steampipe plugin to query projects, teams, users and more from Env0."
+description: "Steampipe plugin to query projects, teams, users and more from env0."
 og_description: "Query env0 with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/env0-social-graphic.png"
 ---
@@ -54,11 +54,11 @@ steampipe plugin install env0
 
 ### Credentials
 
-| Item        | Description                                                                                                                                                                                           |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Credentials | env0 requires an API Key and an API Secret for all requests.                                                                |
-| Permissions | The organization administrator creates the API keys and assigns a role to it. If the role assignment changes then the permission level of API keys also change.                                                         |
-| Radius      | Each connection represents a single env0 organization.                                                                                                                                           |
+| Item        | Description                                                                                                                                                                                                                                          |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Credentials | env0 requires an API Key and an API Secret for all requests.                                                                                                                                                                                         |
+| Permissions | The organization administrator creates the API keys and assigns a role to it. If the role assignment changes then the permission level of API keys also change.                                                                                      |
+| Radius      | Each connection represents a single env0 organization.                                                                                                                                                                                               |
 | Resolution  | 1. Credentials explicitly set in a steampipe config file (`~/.steampipe/config/env0.spc`)<br />2. Credentials specified in environment variables, e.g., `ENV0_API_KEY`, `ENV0_API_SECRET`.<br />3. Credentials from the env0 CLI configuration file. |
 
 ### Configuration
@@ -73,11 +73,11 @@ connection "env0" {
 
   # For setting API key and secret see instructions at https://docs.env0.com/reference/authentication
   # `api_key`: The API key for the env0 account. (Required)
-  # This can also be set via the `ENV0_API_KEY` environment variable. 
+  # This can also be set via the `ENV0_API_KEY` environment variable.
   # api_key = "asdpoblfth8acbd"
 
   # `api_secret`: The API secret of the env0 account. (Required)
-  # This can also be set via the `ENV0_API_SECRET` environment variable. 
+  # This can also be set via the `ENV0_API_SECRET` environment variable.
   # api_secret = "LjatOxDqNN9iKH1sLn14TojGkuH3GQAx"
 
   # If no credentials are specified, the plugin will use env0 CLI configuration, if it has been installed locally.
