@@ -2,6 +2,7 @@ package env0
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"os"
 
@@ -21,11 +22,9 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 		return cachedData.(env0CLient.ApiClientInterface), nil
 	}
 
-	// Default to using env vars (#2)
 	api_key := os.Getenv("ENV0_API_KEY")
 	api_secret := os.Getenv("ENV0_API_SECRET")
 
-	// But prefer the config (#1)
 	env0Config := GetConfig(d.Connection)
 
 	if env0Config.APIKey != nil {
@@ -33,6 +32,25 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 	}
 	if env0Config.APISecret != nil {
 		api_secret = *env0Config.APISecret
+	}
+
+	// Check for env0 CLI configuration
+
+	if api_key == "" && api_secret == "" {
+		home, _ := os.UserHomeDir()
+		file, _ := os.ReadFile(home + "/.env0/config.json")
+		cliCreds := make(map[string]string)
+
+		_ = json.Unmarshal([]byte(file), &cliCreds)
+
+		for k, v := range cliCreds {
+			if k == "apiKey" {
+				api_key = v
+			}
+			if k == "apiSecret" {
+				api_secret = v
+			}
+		}
 	}
 
 	if api_key == "" {
