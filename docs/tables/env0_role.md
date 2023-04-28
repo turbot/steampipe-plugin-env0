@@ -45,7 +45,7 @@ from
   env0_role;
 ```
 
-### List the custom permissions that provide organizational view access
+### List the custom roles that provide organizational view access
 
 ```sql
 select

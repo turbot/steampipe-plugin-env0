@@ -86,8 +86,7 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			{
 				Name:        "latest_deployment_log",
 				Description: "The most recent deployment log for a specific environment or deployment.",
-				Type:        proto.ColumnType_STRING,
-				Transform:   transform.FromField("LatestDeploymentLog"),
+				Type:        proto.ColumnType_JSON,
 			},
 			{
 				Name:        "terragrunt_working_directory",

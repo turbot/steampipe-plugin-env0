@@ -87,23 +87,6 @@ where
   organization_role = 'Admin';
 ```
 
-### List API keys that have admin privileges
-
-```sql
-select
-  name,
-  id,
-  api_key_id,
-  organization_id,
-  organization_role,
-  created_at,
-  created_by
-from
-  env0_api_key
-where
-  organization_role = 'Admin';
-```
-
 ### List the creator details of each key
 
 ```sql
@@ -117,7 +100,5 @@ select
   created_by_user ->> 'name' as created_by_user_name,
   created_by_user ->> 'email' as created_by_user_email
 from
-  env0_api_key
-where
-  organization_role = 'Admin';
+  env0_api_key;
 ```

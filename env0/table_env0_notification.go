@@ -45,8 +45,8 @@ func tableEnv0Notification(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by_user",
-				Description: "Name of the user created the notification.",
-				Type:        proto.ColumnType_STRING,
+				Description: "Details of the user who created the notification.",
+				Type:        proto.ColumnType_JSON,
 			},
 			{
 				Name:        "type",
@@ -82,8 +82,8 @@ func listNotification(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrat
 		return nil, err
 	}
 
-	for _, Notification := range notifications {
-		d.StreamListItem(ctx, Notification)
+	for _, notification := range notifications {
+		d.StreamListItem(ctx, notification)
 
 		// Context may get cancelled due to manual cancellation or if the limit has been reached
 		if d.RowsRemaining(ctx) == 0 {
