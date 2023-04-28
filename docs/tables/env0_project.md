@@ -67,3 +67,38 @@ from
 where
   is_archived is false
 ```
+
+### List all projects where continuous deployment default is set to false
+
+```sql
+select
+  created_by,
+  created_by_user,
+  id,
+  is_archived,
+  name,
+  organization_id
+  role
+from
+  env0_project
+where
+  project_policy ->> 'continuousDeploymentDefault' = 'false'
+```
+
+### Get all project policy settings of specific project
+
+```sql
+select
+  name,
+  organization_id,
+  project_policy ->> 'numberOfEnvironmentsTotal' as max_no_of_environments,
+  project_policy ->> 'requiresApprovalDefault' as requires_approval_default,
+  project_policy ->> 'numberOfEnvironments' as no_of_environment,
+  project_policy ->> 'continuousDeploymentDefault' as continuous_deployment_default,
+  project_policy ->> 'maxTtl' as max_ttl,
+  project_policy ->> 'defaultTtl' as default_ttl
+from
+  env0_project
+where
+  id = '4a639364-1234-4eee-5678-ad38e1c1ccee'
+```

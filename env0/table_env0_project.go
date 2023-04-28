@@ -3,6 +3,7 @@ package env0
 import (
 	"context"
 
+	"github.com/env0/terraform-provider-env0/client"
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
@@ -77,6 +78,13 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 				Description: "The date and time when project was created",
 				Type:        proto.ColumnType_TIMESTAMP,
 			},
+			{
+				Name:        "project_policy",
+				Description: "Associated project policy with the project",
+				Type:        proto.ColumnType_JSON,
+				Hydrate:     getProjectPolicy,
+				Transform:   transform.FromValue(),
+			},
 			// Steampipe standard columns
 			{
 				Name:        "title",
@@ -138,6 +146,30 @@ func getProject(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData)
 	result, err := client.Project(projectId)
 	if err != nil {
 		plugin.Logger(ctx).Error("env0_project.getProject", "api_error", err)
+		return nil, err
+	}
+
+	return result, nil
+}
+
+func getProjectPolicy(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+	logger := plugin.Logger(ctx)
+	projectId := h.Item.(client.Project).Id
+
+	if projectId == "" {
+		return nil, nil
+	}
+
+	// Create client
+	client, err := connect(ctx, d)
+	if err != nil {
+		logger.Error("env0_project.getProjectPolicy", "connection_error", err)
+		return nil, err
+	}
+
+	result, err := client.Policy(projectId)
+	if err != nil {
+		plugin.Logger(ctx).Error("env0_project.getProjectPolicy", "api_error", err)
 		return nil, err
 	}
 
