@@ -76,13 +76,13 @@ func listNotification(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrat
 		return nil, err
 	}
 
-	teams, err := client.Notifications()
+	notifications, err := client.Notifications()
 	if err != nil {
 		logger.Error("env0_notification.listNotification", "api_error", err)
 		return nil, err
 	}
 
-	for _, Notification := range teams {
+	for _, Notification := range notifications {
 		d.StreamListItem(ctx, Notification)
 
 		// Context may get cancelled due to manual cancellation or if the limit has been reached
