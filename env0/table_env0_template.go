@@ -34,7 +34,7 @@ func tableenv0Template(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "organization_id",
-				Description: "Unique identifier of the organization.",
+				Description: "The organization ID in which the resource is located.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -96,7 +96,7 @@ func tableenv0Template(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "ssh_keys",
-				Description: "Associated ssh keys with the template.",
+				Description: "The associated ssh keys with the template.",
 				Type:        proto.ColumnType_JSON,
 			},
 			{
@@ -111,12 +111,12 @@ func tableenv0Template(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "is_gitlab_enterprise",
-				Description: "Whether or not template belongs to GitLab enterprise.",
+				Description: "Specifies whether or not template belongs to GitLab enterprise.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
 				Name:        "is_github_enterprise",
-				Description: "Whether or not template belongs to GitHub enterprise.",
+				Description: "Specifies whether or not template belongs to GitHub enterprise.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
@@ -141,27 +141,27 @@ func tableenv0Template(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "is_terragrunt_run_all",
-				Description: "Whether or not terragrunt will execute all the modules associated with the template.",
+				Description: "Specifies whether or not terragrunt will execute all the modules associated with the template.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
 				Name:        "is_deleted",
-				Description: "Whether or not the template is deleted.",
+				Description: "Specifies whether or not the template is deleted.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
 				Name:        "is_azure_devops",
-				Description: "Whether the template is associated with Azure DevOps deployment.",
+				Description: "Specifies whether the template is associated with Azure DevOps deployment.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
 				Name:        "bitbucket_client_Key",
-				Description: "Bitbucket client key used by template.",
+				Description: "The Bitbucket client key used by template.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "is_bitbucket_server",
-				Description: "Whether or not template is using Bitbucket server.",
+				Description: "Specifies whether or not template is using Bitbucket server.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{

@@ -35,7 +35,7 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "organization_id",
-				Description: "Unique identifier of the organization.",
+				Description: "The organization ID in which the project is located.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -45,12 +45,12 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by",
-				Description: "Creator of the project.",
+				Description: "Name of the authentication type used for creation of project.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "created_by_user",
-				Description: "The role of the person created the project.",
+				Description: "Details of the user who created the project.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -60,7 +60,7 @@ func tableenv0Project(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "role",
-				Description: "The role of the person created the project.",
+				Description: "The role of the person who created the project.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{

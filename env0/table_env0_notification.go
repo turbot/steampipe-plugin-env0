@@ -25,12 +25,12 @@ func tableEnv0Notification(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "id",
-				Description: "Notification ID.",
+				Description: "The number uniquely identifying the notification.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "organization_id",
-				Description: "Organization ID.",
+				Description: "The organization ID in which the resource is located.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -40,7 +40,7 @@ func tableEnv0Notification(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by",
-				Description: "Name of the authentication type used for creation of authentication.",
+				Description: "Name of the authentication type used for creation of notification.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{

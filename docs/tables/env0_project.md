@@ -1,6 +1,6 @@
 # Table: env0_project
 
-This table returns information about the env0 Organization.
+This table returns information about the env0 Project.
 
 ## Examples
 
@@ -68,7 +68,7 @@ where
   is_archived is false
 ```
 
-### List all projects where continuous deployment default is set to false
+### List all projects where continuous deployment default is disabled
 
 ```sql
 select

@@ -64,4 +64,3 @@ where
   )
   @ > '"VIEW_ORGANIZATION"';
 ```
-

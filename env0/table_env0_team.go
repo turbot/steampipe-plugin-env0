@@ -34,7 +34,7 @@ func tableEnv0Team(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "organization_id",
-				Description: "Organization ID.",
+				Description: "The organization ID in which the resource is located.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{

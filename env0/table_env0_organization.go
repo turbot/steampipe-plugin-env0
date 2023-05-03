@@ -25,17 +25,17 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "id",
-				Description: "Organization ID.",
+				Description: "The unique ID of the Organization.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "max_ttl",
-				Description: "Max TTL of the organization.",
+				Description: "Max TTL policies on the organization level for environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "default_ttl",
-				Description: "Default TTL of the organization.",
+				Description: "Default TTL policies on the organization level for environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -45,7 +45,7 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "do_not_consider_merge_commits_for_pr_plans",
-				Description: "Check if the organization does not consider merge commits for PR plans.",
+				Description: "Specifies if the organization does not consider merge commits for PR plans.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
@@ -70,7 +70,7 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by",
-				Description: "The creator of the organization.",
+				Description: "Name of the authentication type used for creation of organization.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -85,7 +85,7 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "role",
-				Description: "Organization role.",
+				Description: "The role of the person who created the organziation.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{

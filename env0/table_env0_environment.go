@@ -24,27 +24,27 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 		Columns: []*plugin.Column{
 			{
 				Name:        "name",
-				Description: "Name of the environment.",
+				Description: "The name of the environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "id",
-				Description: "Unique identifier of the environment.",
+				Description: "The number uniquely identifying the environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "project_id",
-				Description: "project id of the environment.",
+				Description: "An unique ID of the environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "workspace_name",
-				Description: "WorkspaceName is a unique identifier for each workspace in env0. It helps to distinguish one workspace from another and is used to reference a particular workspace when creating, modifying, or deleting it.",
+				Description: "The name of the Workspace associated to environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "requires_approval",
-				Description: "Specifies boolean attribute that can be set for an environment. If set to true, it means that any changes made to the environment will require approval from an authorized user before they are applied.",
+				Description: "Specifies boolean attribute that is set to the environment.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
@@ -59,17 +59,17 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "auto_deploy_on_path_changes_only",
-				Description: "This sets environment setting in env0 that allows you to specify whether or not automatic deployments of infrastructure changes should be triggered only when changes are made to specific files or directories (based on a defined glob pattern).",
+				Description: "Specifies whether or not automatic deployments of infrastructure changes should be triggered only when changes are made to specific files or directories.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
 				Name:        "auto_deploy_by_custom_glob",
-				Description: "The feature in env0 that allows users to specify a custom glob pattern that determines which files should trigger an automatic deployment when changes are detected.",
+				Description: "Specifies a custom glob pattern that determines which files should trigger an automatic deployment when changes are detected.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "status",
-				Description: "Status of the environment.",
+				Description: "The status of the environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -80,7 +80,7 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "latest_deployment_log_id",
-				Description: "Represents the ID of the most recent deployment log for the environment.",
+				Description: "Represents the ID of the most recent deployment log.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -90,7 +90,7 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "terragrunt_working_directory",
-				Description: "The parameter used in env0 environments that specifies the directory where Terragrunt will look for the terragrunt.hcl configuration file.",
+				Description: "Specifies the directory where Terragrunt will look for the terragrunt.hcl configuration file.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -100,7 +100,7 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "blueprint_id",
-				Description: "Specifies the ID of the blueprint associated with the environment. By associating an environment with a blueprint, env0 can automatically provision and manage the infrastructure resources defined in the blueprint for the environment.",
+				Description: "Specifies the ID of the blueprint associated with the environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -110,7 +110,7 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "is_archived",
-				Description: "Specifies whether an environment is archived or not.",
+				Description: "Specifies whether an environment is set to archived or not.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			// Steampipe standard columns

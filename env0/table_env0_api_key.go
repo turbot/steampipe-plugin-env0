@@ -36,12 +36,12 @@ func tableEnv0APIKey(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "organization_id",
-				Description: "Organization ID.",
+				Description: "The organization ID in which the resource is located.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "organization_role",
-				Description: "Organization role.",
+				Description: "Associated organization role.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
@@ -57,7 +57,7 @@ func tableEnv0APIKey(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by",
-				Description: "Returns the time and date when the API key was last used.",
+				Description: "Name of the authentication type used for creation of API key.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{

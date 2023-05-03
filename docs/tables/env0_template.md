@@ -59,7 +59,7 @@ where
   updates_at >= now() - interval '30' day;
 ```
 
-### List templates that uses GitHub enterprise
+### List templates that uses GitHub or GitLab enterprise
 
 ```sql
 select
@@ -68,11 +68,10 @@ select
   author,
   created_at,
   organization_id,
-  is_gitlab_enterprise,
   project_ids,
   terraform_version
 from
   env0_template
 where
-  is_github_enterprise
+  is_github_enterprise or is_gitlab_enterprise
 ```
