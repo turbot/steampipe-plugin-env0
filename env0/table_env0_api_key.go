@@ -89,7 +89,6 @@ func listAPIKeys(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData
 	}
 
 	apiKeys, err := client.ApiKeys()
-	plugin.Logger(ctx).Error("API KEY LENGTH:", len(apiKeys))
 	if err != nil {
 		logger.Error("env0_api_key.listAPIKeys", "api_error", err)
 		return nil, err

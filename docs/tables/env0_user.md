@@ -1,6 +1,6 @@
 # Table: env0_user
 
-This table returns information about the users in an env0 Organization.
+In env0, a user refers to an individual who has access to the env0 platform and participates in the management, configuration, and deployment of environments and resources. This table returns information about the users in an env0 Organization.
 
 ## Examples
 

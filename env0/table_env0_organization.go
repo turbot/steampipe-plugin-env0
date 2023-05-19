@@ -80,7 +80,7 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "updated_at",
-				Description: "Date and time when the organziation last updated.",
+				Description: "Date and time when the organziation was last updated.",
 				Type:        proto.ColumnType_TIMESTAMP,
 			},
 			{

@@ -40,7 +40,7 @@ func tableEnv0Notification(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "created_by",
-				Description: "Name of the authentication type used for creation of notification.",
+				Description: "Name of the user who created the notification.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{

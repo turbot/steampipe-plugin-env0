@@ -1,6 +1,6 @@
 # Table: env0_environment
 
-This table returns information about the env0 Environment.
+An env0 environment is a virtual representation of a software development or deployment environment. It is created within the env0 platform to facilitate the management and orchestration of infrastructure resources, configurations, and deployments. An environment in env0 typically consists of various components such as cloud providers, infrastructure templates, configurations, and application code. This table returns information about the env0 Environment.
 
 ## Examples
 

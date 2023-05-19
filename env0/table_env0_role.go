@@ -44,7 +44,7 @@ func tableEnv0Role(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "is_default_role",
-				Description: "Returns tru if the role is default.",
+				Description: "Returns true if the role is default.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			// Steampipe standard columns
@@ -91,6 +91,10 @@ func listRoles(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) 
 func getRole(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 	logger := plugin.Logger(ctx)
 	id := d.EqualsQualString("id")
+
+	if id == "" {
+		return nil, nil
+	}
 
 	// Create client
 	client, err := connect(ctx, d)

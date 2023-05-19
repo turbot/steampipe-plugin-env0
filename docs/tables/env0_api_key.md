@@ -1,6 +1,6 @@
 # Table: env0_api_key
 
-This table returns information about the API keys in your env0 Organization.
+An API key in env0 is a unique identifier that grants access to the env0 API. It serves as a security measure to ensure that only authorized individuals or applications can interact with env0's services programmatically. API keys are typically used to authenticate API requests and enable integration with other systems or tools. This table returns information about the API keys in your env0 Organization.
 
 ## Examples
 
@@ -96,7 +96,7 @@ select
   api_key_id,
   organization_id,
   created_at,
-  created_by
+  created_by,
   created_by_user ->> 'name' as created_by_user_name,
   created_by_user ->> 'email' as created_by_user_email
 from

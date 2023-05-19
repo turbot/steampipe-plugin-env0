@@ -34,17 +34,17 @@ func tableenv0Environment(_ context.Context) *plugin.Table {
 			},
 			{
 				Name:        "project_id",
-				Description: "An unique ID of the environment.",
+				Description: "A unique ID of the project.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "workspace_name",
-				Description: "The name of the Workspace associated to environment.",
+				Description: "The name of the workspace associated to the environment.",
 				Type:        proto.ColumnType_STRING,
 			},
 			{
 				Name:        "requires_approval",
-				Description: "Specifies boolean attribute that is set to the environment.",
+				Description: "A boolean value indicating whether changes to the environment require approval before they can be applied.",
 				Type:        proto.ColumnType_BOOL,
 			},
 			{
@@ -136,13 +136,13 @@ func listEnvironments(ctx context.Context, d *plugin.QueryData, h *plugin.Hydrat
 		return nil, err
 	}
 
-	result, err := client.Environments()
+	environment, err := client.Environments()
 	if err != nil {
 		logger.Error("env0_environment.listEnvironments", "api_error", err)
 		return nil, err
 	}
 
-	for _, item := range result {
+	for _, item := range environment {
 		d.StreamListItem(ctx, item)
 
 		// Context may get cancelled due to manual cancellation or if the limit has been reached
@@ -172,11 +172,11 @@ func getEnvironment(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateD
 		return nil, err
 	}
 
-	result, err := client.Environment(environmentId)
+	environment, err := client.Environment(environmentId)
 	if err != nil {
 		plugin.Logger(ctx).Error("env0_environment.getEnvironment", "api_error", err)
 		return nil, err
 	}
 
-	return result, nil
+	return environment, nil
 }

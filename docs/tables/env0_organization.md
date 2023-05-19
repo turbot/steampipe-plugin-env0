@@ -1,6 +1,6 @@
 # Table: env0_organization
 
-This table returns information about the env0 Organization.
+An env0 organization refers to a logical entity within the env0 platform that serves as a container for managing and organizing resources, environments, and users. Organizations in env0 provide a way to structure and segregate different teams, projects, or departments within a larger context. This table returns information about the env0 Organization.
 
 ## Examples
 
@@ -19,7 +19,7 @@ from
   env0_organization;
 ```
 
-### List Organizations created in the last 30 days
+### List organizations created in the last 30 days
 
 ```sql
 select
@@ -35,7 +35,7 @@ where
   created_at >= now() - interval '30' day;
 ```
 
-### List Organizations that have not been updated in the last 30 days
+### List organizations that have not been updated in the last 30 days
 
 ```sql
 select
@@ -52,7 +52,7 @@ where
   updated_at <= now() - interval '30' day;
 ```
 
-### List Organizations with OIDC disabled
+### List organizations with OIDC disabled
 
 ```sql
 select

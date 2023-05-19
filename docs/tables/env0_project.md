@@ -1,6 +1,6 @@
 # Table: env0_project
 
-This table returns information about the env0 Project.
+Projects are used in env0 to provide granular access control to Environments. Every environment in env0 exists under a project, and users are given access on a per-project basis. This table returns information about the env0 Project.
 
 ## Examples
 
@@ -51,7 +51,7 @@ where
   updated_at <= now() - interval '30' day;
 ```
 
-### List all projects archive is set to false'
+### List unarchived projects
 
 ```sql
 select
@@ -65,10 +65,10 @@ select
 from
   env0_project
 where
-  is_archived is false
+  is_archived is false;
 ```
 
-### List all projects where continuous deployment default is disabled
+### List projects that do not implement continuous deployment
 
 ```sql
 select
@@ -82,7 +82,7 @@ select
 from
   env0_project
 where
-  project_policy ->> 'continuousDeploymentDefault' = 'false'
+  project_policy ->> 'continuousDeploymentDefault' = 'false';
 ```
 
 ### Get all project policy settings of specific project
@@ -100,5 +100,5 @@ select
 from
   env0_project
 where
-  id = '4a639364-1234-4eee-5678-ad38e1c1ccee'
+  id = '4a639364-1234-4eee-5678-ad38e1c1ccee';
 ```

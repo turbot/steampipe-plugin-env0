@@ -92,7 +92,6 @@ func tableenv0Template(_ context.Context) *plugin.Table {
 				Name:        "retry",
 				Description: "Retry associated with the template.",
 				Type:        proto.ColumnType_JSON,
-				Transform:   transform.FromField("Retry"),
 			},
 			{
 				Name:        "ssh_keys",

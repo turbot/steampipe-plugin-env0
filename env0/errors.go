@@ -7,7 +7,7 @@ import (
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
-// shouldIgnoreErrors:: function which returns an ErrorPredicate for LaunchDarkly API calls
+// shouldIgnoreErrors:: function which returns an ErrorPredicate for env0 API calls
 func shouldIgnoreErrors(notFoundErrors []string) plugin.ErrorPredicateWithContext {
 	return func(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData, err error) bool {
 		for _, pattern := range notFoundErrors {

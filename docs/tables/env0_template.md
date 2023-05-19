@@ -1,6 +1,6 @@
 # Table: env0_template
 
-This table returns information about the env0 Template.
+Env0 templates provide a declarative approach to defining infrastructure and environment configurations. They describe the desired resources, services, and settings needed for an environment to be provisioned and deployed. This table returns information about the env0 templates.
 
 ## Examples
 
@@ -56,7 +56,7 @@ select
 from
   env0_template
 where
-  updates_at >= now() - interval '30' day;
+  updated_at >= now() - interval '30' day;
 ```
 
 ### List templates that uses GitHub or GitLab enterprise
@@ -73,5 +73,5 @@ select
 from
   env0_template
 where
-  is_github_enterprise or is_gitlab_enterprise
+  is_github_enterprise or is_gitlab_enterprise;
 ```

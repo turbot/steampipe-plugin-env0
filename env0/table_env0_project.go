@@ -108,13 +108,13 @@ func listProjects(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateDat
 		return nil, err
 	}
 
-	result, err := client.Projects()
+	project, err := client.Projects()
 	if err != nil {
 		logger.Error("env0_project.listProjects", "api_error", err)
 		return nil, err
 	}
 
-	for _, item := range result {
+	for _, item := range project {
 		d.StreamListItem(ctx, item)
 
 		// Context may get cancelled due to manual cancellation or if the limit has been reached
@@ -143,13 +143,13 @@ func getProject(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData)
 		return nil, err
 	}
 
-	result, err := client.Project(projectId)
+	project, err := client.Project(projectId)
 	if err != nil {
 		plugin.Logger(ctx).Error("env0_project.getProject", "api_error", err)
 		return nil, err
 	}
 
-	return result, nil
+	return project, nil
 }
 
 func getProjectPolicy(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {

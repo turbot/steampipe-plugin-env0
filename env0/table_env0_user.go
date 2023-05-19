@@ -22,55 +22,55 @@ func tableEnv0User(_ context.Context) *plugin.Table {
 				Name:        "name",
 				Description: "The name of the user.",
 				Type:        proto.ColumnType_STRING,
-				Transform: transform.FromField("User.Name"),
+				Transform:   transform.FromField("User.Name"),
 			},
 			{
 				Name:        "email",
 				Description: "The email ID of the user.",
 				Type:        proto.ColumnType_STRING,
-				Transform: transform.FromField("User.Email"),
+				Transform:   transform.FromField("User.Email"),
 			},
 			{
 				Name:        "family_name",
 				Description: "The family name of the user.",
 				Type:        proto.ColumnType_STRING,
-				Transform: transform.FromField("User.FamilyName"),
+				Transform:   transform.FromField("User.FamilyName"),
 			},
 			{
 				Name:        "given_name",
 				Description: "The given name of the user.",
 				Type:        proto.ColumnType_STRING,
-				Transform: transform.FromField("User.GivenName"),
+				Transform:   transform.FromField("User.GivenName"),
 			},
 			{
 				Name:        "user_id",
 				Description: "A unique identifier of the user.",
 				Type:        proto.ColumnType_STRING,
-				Transform: transform.FromField("User.UserId"),
+				Transform:   transform.FromField("User.UserId"),
 			},
 			{
 				Name:        "picture",
 				Description: "The picture of the user.",
 				Type:        proto.ColumnType_STRING,
-				Transform: transform.FromField("User.Picture"),
+				Transform:   transform.FromField("User.Picture"),
 			},
 			{
 				Name:        "created_at",
 				Description: "Time when the user was created.",
 				Type:        proto.ColumnType_TIMESTAMP,
-				Transform: transform.FromField("User.CreatedAt"),
+				Transform:   transform.FromField("User.CreatedAt"),
 			},
 			{
 				Name:        "last_login",
 				Description: "Time when the user last logged in.",
 				Type:        proto.ColumnType_TIMESTAMP,
-				Transform: transform.FromField("User.LastLogin"),
+				Transform:   transform.FromField("User.LastLogin"),
 			},
 			{
 				Name:        "app_metadata",
 				Description: "User's app metadata.",
 				Type:        proto.ColumnType_JSON,
-				Transform: transform.FromField("User.AppMetadata"),
+				Transform:   transform.FromField("User.AppMetadata"),
 			},
 			{
 				Name:        "role",
@@ -122,4 +122,3 @@ func listUsers(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) 
 
 	return nil, nil
 }
-
