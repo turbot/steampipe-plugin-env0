@@ -1,4 +1,4 @@
-## v0.0.1 [TBD]
+## v0.0.1 [2023-05-19]
 
 _What's new?_
 
@@ -12,7 +12,3 @@ _What's new?_
   - [env0_team](https://hub.steampipe.io/plugins/turbot/env0/tables/env0_team)
   - [env0_template](https://hub.steampipe.io/plugins/turbot/env0/tables/env0_template)
   - [env0_user](https://hub.steampipe.io/plugins/turbot/env0/tables/env0_user)
-
-
-
-
