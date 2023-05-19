@@ -1,6 +1,6 @@
 ---
 organization: Turbot
-category: ["software development"]
+category: ["iac"]
 icon_url: "/images/plugins/turbot/env0.svg"
 brand_color: "#00EDB9"
 display_name: "env0"
