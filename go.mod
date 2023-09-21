@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/env0/terraform-provider-env0 v1.4.2
-	github.com/go-resty/resty/v2 v2.7.0
+	github.com/go-resty/resty/v2 v2.8.0
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.5.1
 )
 
@@ -110,11 +110,11 @@ require (
 	go.opentelemetry.io/otel/trace v1.16.0 // indirect
 	go.opentelemetry.io/proto/otlp v0.19.0 // indirect
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1 // indirect
-	golang.org/x/net v0.8.0 // indirect
+	golang.org/x/net v0.15.0 // indirect
 	golang.org/x/oauth2 v0.6.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.8.0 // indirect
-	golang.org/x/text v0.8.0 // indirect
+	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/text v0.13.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/api v0.110.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
