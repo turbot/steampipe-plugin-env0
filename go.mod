@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/env0/terraform-provider-env0 v1.4.2
 	github.com/go-resty/resty/v2 v2.7.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.1
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.2
 )
 
 require (
