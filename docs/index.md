@@ -92,7 +92,4 @@ export ENV0_API_KEY=asdpoblfth8acbd
 export ENV0_API_SECRET=LjatOxDqNN9iKH1sLn14TojGkuH3GQAx
 ```
 
-## Get involved
-
-- Open source: https://github.com/turbot/steampipe-plugin-env0
-- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
+)
