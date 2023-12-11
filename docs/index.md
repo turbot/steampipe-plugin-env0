@@ -8,6 +8,7 @@ short_name: "env0"
 description: "Steampipe plugin to query projects, teams, users and more from env0."
 og_description: "Query env0 with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/env0-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # env0 + Steampipe
