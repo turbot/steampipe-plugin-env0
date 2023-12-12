@@ -15,7 +15,7 @@ engines: ["steampipe", "sqlite", "postgres", "export"]
 
 [env0](https://env0.com) is an automation platform for cloud environments based on infrastructure-as-code templates. env0 combines an easy to use interface with powerful governance tools and cost control so that you, or any member of your team, can quickly and easily deploy and manage environments in the cloud.
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 List your env0 organization details:
 
