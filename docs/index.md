@@ -8,13 +8,14 @@ short_name: "env0"
 description: "Steampipe plugin to query projects, teams, users and more from env0."
 og_description: "Query env0 with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/env0-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # env0 + Steampipe
 
 [env0](https://env0.com) is an automation platform for cloud environments based on infrastructure-as-code templates. env0 combines an easy to use interface with powerful governance tools and cost control so that you, or any member of your team, can quickly and easily deploy and manage environments in the cloud.
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 List your env0 organization details:
 
@@ -91,7 +92,4 @@ export ENV0_API_KEY=asdpoblfth8acbd
 export ENV0_API_SECRET=LjatOxDqNN9iKH1sLn14TojGkuH3GQAx
 ```
 
-## Get involved
-
-- Open source: https://github.com/turbot/steampipe-plugin-env0
-- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
+)
