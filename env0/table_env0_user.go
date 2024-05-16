@@ -17,7 +17,7 @@ func tableEnv0User(_ context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listUsers,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			{
 				Name:        "name",
 				Description: "The name of the user.",
@@ -89,7 +89,7 @@ func tableEnv0User(_ context.Context) *plugin.Table {
 				Type:        proto.ColumnType_STRING,
 				Transform:   transform.FromField("User.Name"),
 			},
-		},
+		}),
 	}
 }
 
