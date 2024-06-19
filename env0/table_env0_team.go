@@ -95,7 +95,6 @@ func getTeam(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (i
 	if id == "" {
 		return nil, nil
 	}
-	
 	// Create client
 	client, err := connect(ctx, d)
 	if err != nil {

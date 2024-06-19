@@ -18,6 +18,12 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 		ConnectionConfigSchema: &plugin.ConnectionConfigSchema{
 			NewInstance: ConfigInstance,
 		},
+		ConnectionKeyColumns: []plugin.ConnectionKeyColumn{
+			{
+				Name:    "organization_id",
+				Hydrate: getOrganizationId,
+			},
+		},
 		TableMap: map[string]*plugin.Table{
 			"env0_api_key":      tableEnv0APIKey(ctx),
 			"env0_environment":  tableenv0Environment(ctx),

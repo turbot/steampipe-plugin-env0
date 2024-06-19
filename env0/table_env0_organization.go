@@ -3,6 +3,7 @@ package env0
 import (
 	"context"
 
+	"github.com/env0/terraform-provider-env0/client"
 	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
@@ -17,7 +18,7 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 		List: &plugin.ListConfig{
 			Hydrate: listOrganizations,
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			{
 				Name:        "name",
 				Description: "The name of the organization.",
@@ -100,7 +101,7 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 				Type:        proto.ColumnType_STRING,
 				Transform:   transform.FromField("Name"),
 			},
-		},
+		}),
 	}
 }
 
@@ -109,19 +110,12 @@ func tableEnv0Organization(_ context.Context) *plugin.Table {
 func listOrganizations(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 	logger := plugin.Logger(ctx)
 
-	// Create client
-	client, err := connect(ctx, d)
-	if err != nil {
-		logger.Error("env0_organization.listOrganizations", "connection_error", err)
-		return nil, err
-	}
-
-	organization, err := client.Organization()
+	organization, err := getOrganizationMemoized(ctx, d, h)
 	if err != nil {
 		logger.Error("env0_organization.listOrganizations", "api_error", err)
 		return nil, err
 	}
-	d.StreamListItem(ctx, organization)
+	d.StreamListItem(ctx, organization.(client.Organization))
 	if d.RowsRemaining(ctx) == 0 {
 		return nil, nil
 	}
