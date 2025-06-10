@@ -7,7 +7,7 @@ toolchain go1.23.2
 require (
 	github.com/env0/terraform-provider-env0 v1.4.2
 	github.com/go-resty/resty/v2 v2.7.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.6
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.7
 )
 
 require (
