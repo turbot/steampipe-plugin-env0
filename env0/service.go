@@ -10,7 +10,7 @@ import (
 	"github.com/env0/terraform-provider-env0/client/http"
 	"github.com/go-resty/resty/v2"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInterface, error) {
@@ -18,7 +18,7 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 	// Load connection from cache, which preserves throttling protection etc
 	cacheKey := "env0"
 
-	if cachedData, ok := d.ConnectionManager.Cache.Get(cacheKey); ok {
+	if cachedData, ok := d.ConnectionCache.Get(ctx, cacheKey); ok {
 		return cachedData.(env0CLient.ApiClientInterface), nil
 	}
 
@@ -74,6 +74,6 @@ func connect(ctx context.Context, d *plugin.QueryData) (env0CLient.ApiClientInte
 	}
 	client := env0CLient.NewApiClient(httpClient, "")
 
-	d.ConnectionManager.Cache.Set(cacheKey, client)
+	_ = d.ConnectionCache.Set(ctx, cacheKey, client)
 	return client, nil
 }
